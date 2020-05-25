@@ -1,0 +1,25 @@
+/*滚动条全局样式*/
+::-webkit-scrollbar {
+  /*其它颜色*/
+  /* color: #FFFFFF !important; */
+  width: 4px !important;
+  /*背景*/
+  background: #292929 !important;
+  opacity: 90%;
+  /*x轴滚动条始终隐藏,y轴始终显示*/
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
+}
+
+/*滚动条里面的滑块*/
+::-webkit-scrollbar-thumb {
+  background-color: mediumseagreen;
+  /*线性渐变*/
+  /* background-image: -webkit-linear-gradient(
+      95deg,
+      rgba(27, 33, 28) 45%,
+      transparent 25%,
+      transparent 50%,
+      transparent 75%,
+      transparent); */
+}

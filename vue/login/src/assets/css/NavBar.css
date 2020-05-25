@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: #880000 solid 0px;
+}
+
+/*侧边导航栏样式*/
+.el-aside {
+  width: 200px !important;
+  /*背景*/
+  background: #292929;
+  text-align: left;
+  /*其它颜色*/
+  /* color: #FFFFFF !important; */
+  /*x轴滚动条始终隐藏,y轴始终显示*/
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+/*侧边导航内部导航菜单样式*/
+.el-submenu {
+  /*背景颜色*/
+  background: #292929;
+}
+
+/*一级菜单 悬停  覆盖el-submenu__title原有样式*/
+.el-submenu__title:hover {
+  /*悬停背景颜色*/
+  background-color: #33B35A !important;
+  /*其它颜色*/
+  color: #FFFFFF !important;
+  outline: 0 !important;
+}
+
+/*侧边导航栏下拉二级菜单内容 覆盖el-menu-item原有样式*/
+.el-menu-item {
+  /*背景*/
+  background-color: #111111;
+  /*左边框*/
+  border-left: #33b35a solid 3px;
+}
+
+/*侧边栏下拉二级菜单悬停*/
+.el-menu-item:hover {
+  outline: 0 !important;
+  /*悬停背景颜色*/
+  background-color: #33b35a !important;
+  /*其它颜色*/
+  color: #FFFFFF !important;
+}
+
+/*侧边栏下拉二级菜单选中*/
+.el-menu-item.is-active {
+  outline: 0 !important;
+  background-color: #33b35a !important;
+  color: #FFFFFF !important;
+}
+
+/*侧边栏用户信息*/
+/* .user_icon {
+  background-color: #353133;
+} */
+
+/*侧边栏用户头像框*/
+.user {
+  margin: 32px 0px 32px 0px;
+  background: #67C23A;
+  position: relative;
+  margin-left: 65px;
+}
+
+/*一级菜单_主页*/
+.zhuye {
+  background-color: #292929 !important;
+  border: 0px;
+}
+
+/*关于系统*/
+.about {
+  background-color: #292929 !important;
+  color: #FFFFFF;
+  border-top: #33B35A solid 2px;
+  text-align: left;
+}
+
+/*关于_标题*/
+.about_title {
+  padding-left: 60px;
+}
+
+/*关于_详情*/
+.about_details {
+  font-size: 14px;
+}
+
+/*顶部导航栏样式*/
+.el-header {
+  background-color: #303133;
+  line-height: 70px;
+}
+
+/*控制正文内容显示部分*/
+.el-main .con_main {
+  /*溢出元素直接舍弃隐藏*/
+  overflow: hidden;
+}

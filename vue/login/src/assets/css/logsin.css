@@ -1,0 +1,63 @@
+.sigin,
+.login {
+    padding: 5% 35%;
+}
+
+.box-card-login,
+.box-card-sigin{
+  border-radius: 50px;
+}
+
+.log_input,
+.sig_input {
+    width: auto;
+    text-align: center;
+    border: 0px red solid;
+    padding-bottom: 10px;
+}
+
+.log_input img,
+.sig_input img {
+    vertical-align: middle;
+    /*垂直居中*/
+}
+
+.userName,
+.userPwd,
+.rePwd,
+.userEmail{
+    border-radius: 20px;
+    width: 260px;
+    height: 25px;
+    vertical-align: middle;
+    outline: none;
+    padding-left: 15px;/*内边距-左,控制光标位置*/
+}
+
+.sub_btn {
+    width: 100px;
+    height: 34px;
+    border-radius: 25px;
+    background: url(../../assets/button/btn_01.png) no-repeat;
+    outline: none;
+    /*去除边框*/
+    color: dimgray;
+    font-size: 20px;
+    font-weight: bold;
+    /*字体加粗*/
+}
+
+.log_a,
+.sig_a {
+    color: grey;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding-left: 130px;
+}
+
+.mz{
+    color:#C82333;
+    font-size: 20px;
+    /* text-decoration: none; *//*取消下划线*/
+}

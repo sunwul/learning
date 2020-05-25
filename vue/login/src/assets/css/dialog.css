@@ -1,0 +1,138 @@
+.dialog *{
+  border: solid 0px #000000;
+}
+/*弹出框总样式*/
+.dialog {
+  /*固定定位*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*背景及透明度*/
+  background: rgba(0, 0, 0, 0.4);
+  /*Z坐标*/
+  z-index: 9999;
+}
+
+/*内层样式,弹窗显示*/
+.dialog-container {
+  /*大小*/
+  width: 300px;
+  height: auto;
+  /*白色背景*/
+  background: #ffffff;
+  /*绝对定位*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*2D转换*/
+  transform: translate(-50%, -50%);
+  /*边框圆角*/
+  border-radius: 16px;
+}
+
+/*标题样式*/
+.dialog-title {
+  width: 100%;
+  height: 60px;
+  /*字体大小*/
+  font-size: 25px;
+  /*颜色*/
+  color: #696969;
+  /*字体粗细*/
+  font-weight: 800;
+  /*内边距 上 左 下 右*/
+  padding: 16px 50px 0 20px;
+  /*鼠标指针样式*/
+  cursor: Default;
+  box-sizing: border-box;
+}
+
+/*关闭按钮区域*/
+.close-btn {
+  /*绝对定位 允许重叠*/
+  position: absolute;
+/*  position: relative; */
+  top: 4px;
+  right: 4px;
+  width: auto;
+  height: auto;
+  line-height: 30px;
+  /*内边距 上 左 下 右*/
+/*  padding: 6px 0px 6px 0px; */
+  text-align: center;
+  font-size: 20px;
+  /*鼠标指针样式*/
+  cursor: pointer;
+  color: red;
+}
+
+
+
+/*内容*/
+.content {
+  /*相对定位,不允许元素重叠*/
+  position: relative;
+  color: #797979;
+  line-height: auto;
+  padding: 0 8px;
+  /*鼠标指针样式*/
+  cursor: Default;
+}
+
+/*按钮组*/
+.btns {
+  width: auto;
+  height: auto;
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  /*向右对齐*/
+  text-align: center;
+  /* padding: 0 0px 0 8px; */
+  box-sizing: border-box;
+  float: right;
+  margin-right: 8px;
+}
+
+/*按钮默认样式*/
+.default-btn,
+.danger-btn,
+.confirm-btn{
+  width: 60px;
+  height: 28px;
+  /*边框圆角*/
+  border-radius: 4px;
+  float: right;
+  margin-left: 4px;
+  /*鼠标指针样式*/
+  cursor: pointer;
+}
+
+/*取消按钮样式*/
+.default-btn {
+  color: #FFFFFF;
+  background: #888888;
+}
+
+/*危险按钮样式*/
+.danger-btn {
+  background: #FF0000;
+}
+
+/*确认按钮*/
+.confirm-btn {
+  color: #FFFFFF;
+  background: #2B81AF;
+}
+
+
+
+/*a标签悬停*/
+/* a:hover {
+   background: rgb(224, 135, 135);
+}
+a:active {
+   background: #EF8C8C;
+} */
