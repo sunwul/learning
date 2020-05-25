@@ -1,0 +1,6 @@
+${AnsiColor.BRIGHT_MAGENTA}                                           __
+${AnsiColor.BRIGHT_GREEN}     _____  __  __ ____   __    __ __  __ ${AnsiColor.BRIGHT_MAGENTA}/  /
+${AnsiColor.BRIGHT_GREEN}    /  ___// / / // ${AnsiColor.BLUE}__${AnsiColor.BRIGHT_GREEN} \ / /${AnsiColor.BLUE}_${AnsiColor.BRIGHT_GREEN}  / // / / //  /
+${AnsiColor.BLUE}    \__  \/ /_/ // / / // // \/ // /_/ //  /
+${AnsiColor.RED}   /_____/\__ _// / / / \__/\__/ \___ //__/
+${AnsiColor.BRIGHT_YELLOW}   ::个人平台->${AnsiColor.BLUE}${spring.application.nameText}${AnsiColor.BRIGHT_YELLOW}::${AnsiColor.GREEN}[${AnsiColor.RED}(${spring.profiles.active})${AnsiColor.GREEN}Ver${spring.application.version}]

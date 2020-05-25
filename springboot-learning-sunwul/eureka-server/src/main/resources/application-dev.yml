@@ -1,0 +1,51 @@
+#开发
+
+#服务端口号
+server:
+  port: 9001
+
+spring:
+  #声明应用名称(注册到注册中心也是使用这个名称)
+  application:
+    name: EurekaServer
+    nameText: Eureka注册中心
+    version: 1.0
+  boot:
+    admin:
+      #配置springboot admin server的地址
+      client:
+        url: http://localhost:8091
+
+eureka:
+  instance:
+    #注册中心ip地址
+    hostname: localhost
+  client:
+    #是否注册自身到eureka服务器  -本身为注册中心所以不需要注册自己  若需要被springboot admin监控则需要自注册
+    register-with-eureka: false
+    #是否从eureka服务器获取注册信息 - 检索服务
+    fetch-registry: false
+    #设置注册中心所在的地址，查询服务和注册服务都需要依赖这个地址
+    service-url:
+      #虽然配置了eureka.client.fetch-registry=false，即禁止自己注册自己
+      #但是eureka server貌似还是会尝试寻找某一个eureka server来注册自己，这种行为并没有被停止
+      #解决方法: 加入自己的地址作为注册地址，虽然并没有实际注册
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/,http://localhost:9001/eureka/
+  #关闭eureka自我保护
+  server:
+    enable-self-preservation: false
+    #prefer-ip-address: true
+    #服务过期时间,未在此时间内收到心跳信息将会被eureka-server除名
+    #lease-expiration-duration-in-seconds: 90
+    #服务刷新时间,每隔多久向eureka-server发送一次心跳信息,续约服务
+    #lease-renewal-interval-in-seconds:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #暴露所有监控端点
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

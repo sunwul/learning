@@ -1,0 +1,74 @@
+#端口号
+server:
+  port: 8056
+
+spring:
+  ###服务名称(服务注册到eureka注册中心的名称)
+  application:
+    name: eureka-client-userinfo
+    nameText: UserInfo用户信息模块
+    version: 1.0
+  #数据库配置
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/jdbc?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #配置Druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+  boot:
+    admin:
+      client:
+        # Spring Boot Admin Server 地址
+        url: http://localhost:8091
+        #instance.metadata下的属性配置会向springboot Admin服务端传输本客户端的用户名和密码
+        #这样Admin服务端请求的时候会携带已传递的用户名密码,如果此处的密码和security下的不一致,则服务端将没有权限访问客户端的监控
+#        instance:
+#          metadata:
+#            user.name: ${spring.security.user.name}
+#            user.password: ${spring.security.user.password}
+        #传递Admin服务端的凭证信息，否则不能注册到Admin服务端
+#        username: sunwul
+#        password: 123
+  #安全控制,想要进入模块必须要经过此层验证
+#  security:
+#    user:
+#      name: client
+#      password: client
+
+###服务注册到eureka
+eureka:
+  client:
+    service-url:
+      #服务注册中心端口号
+      #这里可以填写所有的eureka服务器地址并以','分离，当前面不能注册时候,自动选择后面的进行注册，排除单点故障问题
+      defaultZone: http://localhost:9001/eureka/ #,http://localhost:9002/eureka/
+    ##向注册中心注册自己
+    register-with-eureka: true
+    #从eureka上获取注册信息
+    fetch-registry: true
+  instance:
+    #服务在eureka注册中心里Status项的默认连接,连接到SwaggerUI中,可以直接在eureka中点进当前服务的Swagger文档
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
+    #health-check-url-path: /actuator/health
+
+##mybatis设置
+mybatis:
+  #加载全局配置文件
+  config-location: classpath:mybatis/mybatis-config.xml
+  #加载指定路径下的sql映射
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  #扫描entity
+  type-aliases-package: com.sunwul.userinfo.entity
+
+#端点暴露
+management:
+  endpoints:
+    web:
+      exposure:
+        #暴露所有监控端点
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+

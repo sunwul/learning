@@ -1,0 +1,16 @@
+server:
+  port: 8057
+spring:
+  application:
+    name: eureka-client-hello
+eureka:
+  client:
+    # 是否将eureka自身作为应用注册到eureka注册中心,默认为true
+    registerWithEureka: true
+    serviceUrl:
+      #服务注册中心端口号
+      #这里可以填写所有的eureka服务器地址并以','分离，当前面不能注册时候,自动选择后面的进行注册，排除单点故障问题
+      defaultZone: http://localhost:9001/eureka/,http://localhost:9002/eureka/
+  instance:
+    # 服务在eureka注册中心里Status项的默认连接,连接到SwaggerUI中,可以直接在eureka中点进当前服务的Swagger文档
+    status-page-url: http://localhost:${server.port}/swagger-ui.html

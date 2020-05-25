@@ -1,0 +1,28 @@
+#服务端口号
+server:
+  port: 9002
+
+#声明自己注册到注册中心的名称,不向注册中心注册则此处无效
+spring:
+  application:
+    name: eurkaServer2
+    nameText: Eureka注册中心2
+    version: 1.0
+
+eureka:
+  instance:
+    #注册中心ip地址
+    hostname: localhost
+    #prefer-ip-address: true
+  client:
+    #是否注册自身到eureka服务器  -本身为注册中心所以不需要注册自己
+    register-with-eureka: false
+    #是否从eureka服务器获取注册信息 - 检索服务
+    fetch-registry: false
+    #设置注册中心所在的地址，查询服务和注册服务都需要依赖这个地址
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  #关闭eureka自我保护
+  server:
+    enable-self-preservation: false
+

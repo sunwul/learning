@@ -1,0 +1,78 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: zuul
+    nameText: Zuul网关
+    version: 1.0
+
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      #服务注册中心端口号
+      #这里可以填写所有的eureka服务器地址并以','分离，当前面不能注册时候,自动选择后面的进行注册，排除单点故障问题
+      defaultZone: http://localhost:9001/eureka/ #,http://localhost:9002/eureka/
+    ##向注册中心注册自己
+    register-with-eureka: true
+    #从eureka上获取注册信息
+    fetch-registry: true
+  instance:
+    # 服务在eureka注册中心里Status项的默认连接,连接到SwaggerUI中,可以直接在eureka中点进当前服务的Swagger文档
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
+
+
+zuul:
+  #  隐藏所有微服务名称(即使用服务名称无法访问到服务) 关闭自动创建默认路由功能
+  ignored-services: "*"
+  routes:
+    eureka-client-userinfo:
+      path: /userinfo/**
+      #把包含path中的路径的请求跳转到url对应地址
+      #url: http://localhost:8056  #http://localhost:8090/userinfo调用http://localhost:8056中所有服务
+      #把包含path中的路径的请求跳转到对应服务
+      service-id: eureka-client-userinfo
+    eureka-client-userinfocs: #两个serviceName不一样,但请求的服务一样,所以两个实现的效果是相同的
+      path: /userinfocs/**
+      #把包含path中的路径的请求跳转到url对应地址
+      url: http://localhost:8056  #http://localhost:8090/userinfocs调用http://localhost:8056中所有服务
+      #把包含path中的路径的请求跳转到对应服务
+      #service-id: eureka-client-userinfo
+    eureka-client-hellocs:  #两个serviceName不一样,但配置了相同的转发规则,所以两个实现的效果是相同的
+      path: /eureka-client-hello/**
+      #把包含path中的路径的请求跳转到对应服务
+      service-id: eureka-client-hello
+      #此时服务可使用地址:http://localhost:8090/eureka-client-hello/hello/world
+      #来调用原地址http://localhost:8057/hello/world的服务
+      #相当于用http://localhost:8090/eureka-client-hello来替代了http://localhost:8057,隐藏了服务的真实地址信息
+    hello: # #两个serviceName不一样,但配置了相同的转发规则,所以两个实现的效果是相同的
+      path: /world/**
+      service-id: eureka-client-hello #http://localhost:8090/world/hello/world
+  #全局为路由path增加前缀信息
+  #prefix: /api
+  #strip-prefix: true #关闭服务移除代理前缀的动作  想要全局前缀就配置true,不想要就配置false  默认true
+    traditional-url:                             #传统的路由配置,此名称可以自定义
+      #strip-prefix: false
+      #当strip-prefix=false时
+      #http://localhost:8090/api/user/getcs = http://localhost:8056/api/user/getcs  (此服务未定义)
+      path: /us/**                           #映射的url
+      url: http://localhost:8056
+    user:
+      #当strip-prefix=true时  默认为true
+      #http://localhost:8090/api/user/getcs = http://localhost:8056/user/getcs
+      path: /user/**
+      service-id: eureka-client-userinfo
+    springboot-admin-server: #springboot admin转发
+      path: /adminServer/**
+      service-id: springboot-admin-server
+  #ignored-patterns: /**/us/**  #会忽略所有路径中带/hello/的URL
+
+
+
+# zuul转发有两种配置 1.URL ; 2.eureka server的serviceId(即各服务向eureka注册时的名称)
+#  zuul.routes 是固定的
+#  serviceName 可以自定义,这里是各服务的spring.application.name,便于标识
+#  serviceId 是 eureka 服务注册时的名称;spring.application.name
+#  path 匹配的路径
+
+

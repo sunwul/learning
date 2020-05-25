@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--项目信息-->
+    <groupId>com.sunwul</groupId>
+    <artifactId>springboot-learning-sunwul</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>springboot-learning-sunwul</name>
+    <description>Demo project for Spring Boot</description>
+    <!--打包方式为pom-->
+    <packaging>pom</packaging>
+
+
+    <!--声明父模块-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!--java版本,SpringCloud版本,文件拷贝时的编码-->
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <!--公共依赖控制-->
+    <dependencies>
+        <!--基础web依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--测试模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- swagger -->
+        <!-- http://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- http://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <!--swagger-ui是swagger的子模块，提供了统一的API展示页面-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <!--MQ消息队列-->
+        <!-- activemq -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+        <!--rabbitmq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--依赖版本控制-->
+    <dependencyManagement>
+        <dependencies>
+            <!--spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <!--使用定义的properties控制版本-->
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--模块-->
+    <modules>
+        <!--eureka注册中心 9001-->
+        <module>eureka-server</module>
+        <!--第二个注册中心 9002-->
+        <module>eureka-server2</module>
+        <!--eureka-client  eureka服务测试  服务提供者 8057 Hello A-->
+        <module>eureka-client</module>
+        <!--第二个eureka-client  服务提供者 8058 Hello B-->
+        <module>eureka-client2</module>
+        <!--第三个eureka-client 服务消费者 8059  Ribbon负载均衡器+Hystrix熔断 8057 & 8058-->
+        <module>eureka-client-customer</module>
+        <!--springboot admin server 8091-->
+        <module>admin-server</module>
+        <!--zuul网关服务 8090-->
+        <module>zuul</module>
+        <!--用户信息操作 8056-->
+        <module>userinfo</module>
+        <!--ELK实例 springboot整合logstash-->
+        <module>elk</module>
+        <!--redis实例 springboot整合redis-->
+        <module>redis</module>
+        <!--mq消息队列 消息生产者-->
+        <module>mq-provider</module>
+        <!--mq消息队列 消息消费者-->
+        <module>mq-consumer</module>
+    </modules>
+</project>

@@ -1,0 +1,4 @@
+#置文件以application.yml为基础，dev等配置文件在application.yml的基础上进行补全或者覆盖变量
+spring:
+  profiles:
+    active: dev

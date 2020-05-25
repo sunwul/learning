@@ -1,0 +1,11 @@
+com\sunwul\mq\rabbitmq\config\CallbackConfig$2.class
+com\sunwul\mq\rabbitmq\config\DirectRabbitConfig.class
+com\sunwul\mq\activemq\config\ActiveMqConfig.class
+com\sunwul\mq\rabbitmq\config\TopicRabbitConfig.class
+com\sunwul\mq\rabbitmq\controller\SendMessageController.class
+com\sunwul\mq\rabbitmq\config\CallbackConfig$1.class
+com\sunwul\mq\rabbitmq\config\FanoutRabbitConfig.class
+com\sunwul\mq\activemq\controller\ProducerController.class
+com\sunwul\mq\MqProviderApplication.class
+com\sunwul\mq\rabbitmq\entity\Message.class
+com\sunwul\mq\rabbitmq\config\CallbackConfig.class

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+    <!--开启tcp格式的logstash传输，通过TCP协议连接Logstash-->
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!--logstash ip和暴露的端口，我目前理解就是通过这个地址把日志发送过去-->
+        <destination>localhost:5055</destination>
+        <!--输出的编码和格式-->
+        <!--        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">-->
+        <!--自定义输出格式使用此class-->
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <!--时区-->
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "severity": "%level",
+                        <!--                        "service": "${springAppName:-}",-->
+                        "pid": "${PID:-}",
+                        <!--                        "class": "%logger{40}",-->
+                        "message": "%message",
+                        "autore": "sunwul"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- 这个是控制台日志输出格式 方便调试对比-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">     
+        <encoder>         
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %contextName %-5level %logger{50} -%msg%n</pattern>  
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="logstash"/>
+        <appender-ref ref="console"/>
+        <!--        <appender-ref ref="STASH"/>-->
+    </root>
+
+</configuration>

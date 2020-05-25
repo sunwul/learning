@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace与接口绑定-->
+<mapper namespace="com.sunwul.userinfo.mapper.UserInfoMapper">
+    <!--****Select****-->
+    <!--根据id查  测试-->
+    <select id="SelUserInfoByUserId" resultType="com.sunwul.userinfo.entity.UserInfo">
+        select * from userinfo where userid=#{userid}
+    </select>
+    <!--查询指定用户的所有信息-->
+    <select id="SelUserInfo" resultType="com.sunwul.userinfo.entity.UserInfo">
+        select * from userinfo where username=#{username} and userpwd=#{userpwd}
+    </select>
+    <!--查询用户名是否存在-->
+    <select id="SelUserInfoByName" resultType="String">
+        select username from userinfo where username=#{username}
+    </select>
+    <!--查询用户名与密码是否匹配-->
+    <select id="SelUseInfoByNameAndPwd" resultType="int">
+        select count(*) from UserInfo where username=#{username} and userpwd=#{userpwd}
+    </select>
+
+    <!--查询所有用户(返回一个UserInfo的集合) admin-->
+    <select id="FindAllUserInfo" resultType="com.sunwul.userinfo.entity.UserInfo">
+        select * from userinfo order by --userid desc <!--使用 双-userid 对数据库中String字段进行转换-->
+    </select>
+
+    <!--****Insert****-->
+    <!--新增用户-->
+    <insert id="InsUserInfo">
+        insert into userinfo(userid,username,userpwd,useremail) values (#{userid},#{username},#{userpwd},#{useremail})
+    </insert>
+
+    <!--****Delete****-->
+    <!--删除用户数据 以userid __admin管理员-->
+    <delete id="DelUserInfoById">
+        delete from userinfo where userid=#{userid}
+    </delete>
+    <!--删除用户数据 以用户名和密码-->
+    <delete id="DelUserInfoByNameAndPwd">
+        delete from userinfo where username=#{username} and userpwd=#{userpwd}
+    </delete>
+
+    <!--****Update****-->
+    <!--修改用户数据 以用户id-->
+    <update id="UpdUserInfoById">
+        update userinfo set username=#{username} ,userpwd=#{userpwd} ,useremail=#{useremail} where userid=#{userid}
+    </update>
+</mapper>

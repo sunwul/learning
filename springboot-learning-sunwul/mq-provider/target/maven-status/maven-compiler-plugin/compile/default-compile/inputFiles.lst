@@ -1,0 +1,9 @@
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\config\TopicRabbitConfig.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\entity\Message.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\activemq\controller\ProducerController.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\activemq\config\ActiveMqConfig.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\config\DirectRabbitConfig.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\config\FanoutRabbitConfig.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\config\CallbackConfig.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\rabbitmq\controller\SendMessageController.java
+E:\JavaProject\SpringBoot+Vue.js\springboot-learning-sunwul\mq-provider\src\main\java\com\sunwul\mq\MqProviderApplication.java

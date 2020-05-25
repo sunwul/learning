@@ -1,0 +1,54 @@
+server:
+  port: 8063
+
+spring:
+  application:
+    name: MQ
+    nameText: MQ消息队列-消费者
+    version: 1.0
+  ######### activemq ###########
+  activemq:
+    #mq所在的服务地址
+    broker-url: tcp://localhost:61616
+    #是否使用内置的mq
+    in-memory: false
+    #是否在回滚消息之前停止消息的传递,启用此处时,消息顺序不会被保留
+    non-blocking-redelivery: false
+    #用户名与密码
+    user: admin
+    password: admin
+    #等待消息发送响应的时间,设置为0表示永远等待.
+    send-timeout: 0
+    #是否信任所有包
+    #packages.trust-all:
+    #要信任的特定包的逗号分隔列表（当不信任所有包时）
+    #packages.trusted:
+    pool:
+      #是否用Pooledconnectionfactory代替普通的ConnectionFactory 启用连接池
+      enabled: false
+      #当连接请求和池满时是否阻塞。设置false会抛“JMSException异常”
+      block-if-full: true
+      #如果池仍然满，则在抛出异常前阻塞时间。
+      block-if-full-timeout: -1ms
+      #连接空闲超时
+      idle-timeout: 30s
+      #连接池最大连接数
+      max-connections: 1
+      #每个连接的有效会话的最大数目。
+      #      maximum-active-session-per-connection: 500
+      #在空闲连接清除线程之间运行的时间。当为负数时，没有空闲连接驱逐线程运行。
+      time-between-expiration-check: -1ms
+      #是否只使用一个MessageProducer
+      use-anonymous-producers: true
+  jms:
+    #默认情况下activemq提供的是queue模式，若要使用topic模式需要配置下面配置
+    pub-sub-domain: true
+  ########## rabbitmq #######
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: sunwul
+    password: 123
+    #连接到的虚拟主机
+    virtual-host: testhost
+
